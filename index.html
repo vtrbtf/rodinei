@@ -15,7 +15,7 @@ body {
 
 .loader-image {
   position: absolute;
-  width: 500px;
+  width: 800px;
   //height: 300px;
   opacity: 0;
   transition: opacity 0.5s ease-in-out; 
@@ -78,14 +78,78 @@ body {
         "resources/FEA46909-BC29-4D7C-8C19-2C64F0126867.png"
       ];
 
+     const videos = [
+      "https://drive.google.com/file/d/105-PdvjrJUlCBWEvzg7hPiSX-3pkbdJI",
+      "https://drive.google.com/file/d/118FmcrjvGh6bHKl0W7L0GtcG3kAulazk",
+      "https://drive.google.com/file/d/11BmpUgDB_xgLxTfc37BulEjAjnwCVgvU",
+      "https://drive.google.com/file/d/12cguOjGJJJiPSlRwA6jJMQPcfIzULikY",
+      "https://drive.google.com/file/d/12qv7g8fdPgjkL_vzwXWvhxpTVM5YZiFb",
+      "https://drive.google.com/file/d/13P4TqECHGhXCLbmmfr7NoD9cwXlrm-DT",
+      "https://drive.google.com/file/d/15_yKgdFzrKJdx9GSgoVLS2R1A8Tdd-Vh",
+      "https://drive.google.com/file/d/16K0MLRXcGZTW1gSyBcmulnHS01Z4MB4t",
+      "https://drive.google.com/file/d/16aaVmhVBbBpVqsSPYNzIxgWC7KFjaLEC",
+      "https://drive.google.com/file/d/18EXV0UoXTWD6EEsJ1CGQynhH9S4mQ-fX",
+      "https://drive.google.com/file/d/18V8kpB2srRZHgTi6XP6mxSQ6EOG-I1zA",
+      "https://drive.google.com/file/d/18jObwPIaH5eWV01ozed7BezxsqObJvMB",
+      "https://drive.google.com/file/d/190e8dHotJPhp-bP65LOZpedRSXxOBfoI",
+      "https://drive.google.com/file/d/1A4qZKgLRrsw_RTSeSRJvjjcJrFK0x4xv",
+      "https://drive.google.com/file/d/1B8wKJVb0JMV7Oj-pwUOj9LdijGLjeje-",
+      "https://drive.google.com/file/d/1CR7R2Zq2WFDv-3bbhTy6l311yCyd0NMa",
+      "https://drive.google.com/file/d/1DxiW32oUGG2I31LDhQSQejt3USyzuGhv",
+      "https://drive.google.com/file/d/1Egl9aLa-bMDXRK4bv-l5eEbP_rA9gF80",
+      "https://drive.google.com/file/d/1FIwpFMpWl1fDOLN5EJJ0jj5YY_wDGnpp",
+      "https://drive.google.com/file/d/1FqDPuNc3H85qK0GnvHAOi_bm4H1U4K9h",
+      "https://drive.google.com/file/d/1GIdQrXjw576hIdu744PK9CvbvPNNfOyD",
+      "https://drive.google.com/file/d/1GKsoLRQ6c1Ke9X3PUFydZlsohP9qOwJl",
+      "https://drive.google.com/file/d/1GhwexNkLAHmAdxXOu1ZMBDJhHCT32eLN",
+      "https://drive.google.com/file/d/1Ikkfk1rvfTKuYs54nf3rXF6BdrNT160Y",
+      "https://drive.google.com/file/d/1IzTspG9teYtEbmUYyd1xjeJUjoBckP2s",
+      "https://drive.google.com/file/d/1ODHSl74C_weJdAfnv9DH08Dj70s5kpS1",
+      "https://drive.google.com/file/d/1OzC41PpVmvP0YUFDkrsXsfEMd_dLdE18",
+      "https://drive.google.com/file/d/1Rfdc3kn2wfk0IFHU0xm-LshHUDVZVQGr",
+      "https://drive.google.com/file/d/1SDkR1jYUPD1lw-7fB4WI6F-eIRs1Yb0z",
+      "https://drive.google.com/file/d/1T7MP0vp65mgwr3sEw9cvOXL6Bo0Ur8Ew",
+      "https://drive.google.com/file/d/1UOTsZv6I0SNpKYM7nbmqX21j224T9XPw",
+      "https://drive.google.com/file/d/1XOb4rsEWKCARNbk7Clovrn_psybCHEMl",
+      "https://drive.google.com/file/d/1_hPtM4qPdXTUAni2QwTA5h_rMh0guDbp",
+      "https://drive.google.com/file/d/1bsmFR1mF3CzpYsFeLUnobbnhrZUYZiK0",
+      "https://drive.google.com/file/d/1buLC9_wziemfHiNo_kYZMEzvpo67EFvf",
+      "https://drive.google.com/file/d/1coTRVqCpj05zFzC_U51ip7JbGfAiEDIr",
+      "https://drive.google.com/file/d/1dwPIhfgf3mLOq-dX8zo7gKttFPRl8i42",
+      "https://drive.google.com/file/d/1eA0GmP7sP-glL9w58zl2aFFoMGiLb7H9",
+      "https://drive.google.com/file/d/1fnLQIp5ENVSL1GeE9sxCYNi0PopbXdEY",
+      "https://drive.google.com/file/d/1hGPoF6YPxKhwtskxzuT1B7lKOatRS-km",
+      "https://drive.google.com/file/d/1haeIttnTVLBYMwSl0T-tRdAf18fLjp84",
+      "https://drive.google.com/file/d/1iFq4aZhWyr02KFpJPzOkl94rewAEzQjj",
+      "https://drive.google.com/file/d/1jsbLscBeg4r47ww9SYBzy-IjT3jBbrFP",
+      "https://drive.google.com/file/d/1k8pqfbhgPKHTLM6sqBYyhtWv_9QLN0sN",
+      "https://drive.google.com/file/d/1lRasmrWAWPEMoeKOC8kbwRrv12vRAVXX",
+      "https://drive.google.com/file/d/1m9B6-XTu3V4DCTWfkwC3QHQet_bmNvO7",
+      "https://drive.google.com/file/d/1muCsAAp7uew29sEI4YEmfpp6AlDxG7o4",
+      "https://drive.google.com/file/d/1ngCaNxWj7aAc2SRa7nkavegz0Mtmq7_o",
+      "https://drive.google.com/file/d/1pROyKYJ82mC36RU2foWQkbM1dQMWHfEf",
+      "https://drive.google.com/file/d/1qJBVUXV50moBBYqwvcyu6NSgKeOvMgE2",
+      "https://drive.google.com/file/d/1riXq3PGZR4VQU0hG51v9mC7pR9sOncXV",
+      "https://drive.google.com/file/d/1s0FEDrrxO5dhV4hZly1qjn1pptOITBn4",
+      "https://drive.google.com/file/d/1sgEN1xypQsvXjBsz6JumU7ceW1fPW4A6",
+      "https://drive.google.com/file/d/1sl-ciitu8UdDHqBxHkVcWS8AGhpTDbsW",
+      "https://drive.google.com/file/d/1stOMLosAaMSjcIhlIWs2guVAeCwqfZFf",
+      "https://drive.google.com/file/d/1udY-VARL9wAo5lnMJ6kY6RlPXELJsfOF",
+      "https://drive.google.com/file/d/1udYRBkisVzR6230d9zoeQ8MEkQ1PEeAk",
+      "https://drive.google.com/file/d/1vo5BlIZCsDSq_xyX8R_1YiGdEHMb4nNH",
+      "https://drive.google.com/file/d/1xynXTv4e1gwJ1FXj0hfe8YcQFQ1BF7Y3",
+      "https://drive.google.com/file/d/1yStOf15wcp5GwtZGhKrnU64qrm-p8m_u",
+      "https://drive.google.com/file/d/1zCD5wbk6m3ZGZ8mchV0gsSGqhNjGU9xX"
+     ]
+
       function getRandomImage() {
         const randomIndex = Math.floor(Math.random() * images.length);
         return images[randomIndex];
       }
 
       function getRandomPosition() {
-        const x = Math.random() * window.innerWidth - 50; // Adjust offset as needed
-        const y = Math.random() * window.innerHeight - 50; // Adjust offset as needed
+        const x = Math.random() * window.innerWidth - 300; // Adjust offset as needed
+        const y = Math.random() * window.innerHeight - 300; // Adjust offset as needed
         return { x, y };
       }
 
@@ -120,7 +184,7 @@ body {
         // Continuously create new images
       setInterval(() => {
         createLoaderImage();
-      }, 1000 + Math.random() * 500); // Random interval
+      },  500); // Random interval // 1000 + Math.random() *
 
       // Simulate loading time
       setTimeout(() => {
@@ -135,6 +199,12 @@ body {
                 });
           }, 500); 
       }, 5000); // Adjust loading time as needed
+
+     setTimeout(() => {
+       alert(videos[Math.floor(Math.random() * videos.length)])
+       alert(Math.random() * videos.length)
+       window.location.href = videos[Math.floor(Math.random() * videos.length)]
+     }, 8000)
     </script>
 
   </body>
