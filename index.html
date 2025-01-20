@@ -1,11 +1,141 @@
 <!DOCTYPE html>
-<html lang=en>
+<html>
+  <head>
+    <title>Animated Load Screen</title>
+<style>
+body {
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #181818; /* Dark background */
+  overflow: hidden; /* Hide scrollbars */
+}
 
-<head>
-    <meta charset="UTF-8">
+.loader-image {
+  position: absolute;
+  width: 300px;
+  //height: 300px;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out; 
+}
+</style>
+  </head>
+  <body>
+
     <script>
-     window.location.assign('https://google.com');
-    </script>
-</head>
-<body></body>
+      const images = [
+        "resources/01B6C163-BB95-4FA6-85CF-5F62F45FC942.png",
+        "resources/01CFD061-22FF-45CB-B6E3-C07F5C655576.png",
+        "resources/076DFA54-50B7-4996-8976-A131121F8736.png",
+        "resources/0A78E268-28EF-42D0-B32C-F530F8FA7712.png",
+        "resources/0A809CDF-595A-4830-B824-494A1D1F8898.png",
+        "resources/0EA0C4C8-24DE-4D31-BD35-74B07846BFB1.png",
+        "resources/13ACEE01-36BB-4C01-895D-A1745C93D712.png",
+        "resources/21F192C7-3972-426A-BBE9-025883D9E262.png",
+        "resources/283FC15B-D17C-42BD-A5E5-A0BC65457747.png",
+        "resources/32F53F12-6DFE-4496-BE4B-5926BEE3A7F0.png",
+        "resources/337945BA-5BB1-416C-B57F-EF62BCBA969E.png",
+        "resources/3835B9CF-289D-4D16-BC48-F9E1A7E89C5E.png",
+        "resources/3859AADF-BFF2-4D49-9C64-FC5A7EDE8305.png",
+        "resources/39FBEF9E-17C1-4D6E-859F-D8CB4F298385.png",
+        "resources/526F9A6C-F38E-433B-B4C6-FF36CD55400D.png",
+        "resources/5271C2B0-2C45-421B-AF84-D9C754912400.png",
+        "resources/535AA43C-0455-4CD8-9927-666268B26724.png",
+        "resources/540019B7-D62C-49D2-918A-36CD0905B5E7.png",
+        "resources/5477DD22-EC83-493A-A77F-264411BE548A.png",
+        "resources/54A25DDD-375C-4DE6-8B18-D37CA66364EA.png",
+        "resources/5B9993E8-4EA9-4E8E-ADD3-B443EE0F52FE.png",
+        "resources/6BD0E502-4321-4764-B7D2-A684B01883D1.png",
+        "resources/6DE3CDF1-1FC1-418F-9CBA-045D02E41722.png",
+        "resources/6E90CCFF-9367-46AA-A683-B387F451EE42.png",
+        "resources/6F426A5F-F8CF-4019-88DF-BD74039EE08D.png",
+        "resources/7693CE13-38AA-4A69-831F-1A4ECB23CBE7.png",
+        "resources/7989CDD4-B5BE-4C37-9E96-3778E3D971F7.png",
+        "resources/85B7BD09-DBCF-4A48-A297-C42C09F6AF69.png",
+        "resources/883A6667-D219-4399-B4C5-A1EFB683ED76.png",
+        "resources/964948C9-6CE7-4150-85DD-72E17BBB2ACA.png",
+        "resources/9F969BA0-FCC2-4B6D-9610-96BA3C4417CA.png",
+        "resources/A4A5F7F3-DDE2-4AF4-BF5A-622DD2A0CC5F.png",
+        "resources/B5472E21-FC37-4452-8215-6806B5233473.png",
+        "resources/B953C281-E151-47C9-B009-DFA7A33498B6.png",
+        "resources/BF705FA1-1DA4-4A91-BBE9-45FD73694AF7.png",
+        "resources/C11FB068-CF99-40E2-97C4-8FB071F8A970.png",
+        "resources/C17594BB-5456-42FB-A915-B886740C93DE.png",
+        "resources/C41148BC-377B-4B4D-B3AB-9F3104D6AACB.png",
+        "resources/C77A0BC7-D8E6-467E-B331-B3116A18983D.png",
+        "resources/D53F7544-C7DC-4594-8A65-DC0CBA1B20E7.png",
+        "resources/D6457107-3380-41D0-A543-0A2FA9B151DE.png",
+        "resources/D6D73B31-87AD-4105-9543-1D338348F0C9.png",
+        "resources/DEA721DA-EEC5-4D4D-8E8B-07FA3F239781.png",
+        "resources/E30BB10E-900D-4D6A-AB30-84661B746160.png",
+        "resources/E84182F6-8800-4D3A-8FBE-BC72275D8725.png",
+        "resources/F8C9008D-00ED-4B50-BE56-7840A3187072.png",
+        "resources/F9535C82-62DC-4289-AAF4-CAE92FCF272C.png",
+        "resources/F9E268C4-805C-4296-9BA0-714CFD9797BB.png",
+        "resources/FA721CDD-BCB9-46A1-B2C3-3F9729EF3119.png",
+        "resources/FEA46909-BC29-4D7C-8C19-2C64F0126867.png"
+      ];
 
+      function getRandomImage() {
+        const randomIndex = Math.floor(Math.random() * images.length);
+        return images[randomIndex];
+      }
+
+      function getRandomPosition() {
+        const x = Math.random() * window.innerWidth - 50; // Adjust offset as needed
+        const y = Math.random() * window.innerHeight - 50; // Adjust offset as needed
+        return { x, y };
+      }
+
+      function createLoaderImage() {
+        const img = document.createElement("img");
+        img.classList.add("loader-image");
+        img.src = getRandomImage();
+        const { x, y } = getRandomPosition();
+        img.style.left = `${x}px`;
+        img.style.top = `${y}px`;
+        document.body.appendChild(img);
+
+        // Fade in the image
+        setTimeout(() => {
+            img.style.opacity = 1;
+          }, 100); 
+
+        // Fade out the image after a random duration
+        setTimeout(() => {
+            img.style.opacity = 0;
+            setTimeout(() => {
+                  img.remove(); 
+                }, 500); 
+          }, 2000 + Math.random() * 2000); // Random fade-out time
+      }
+
+      // Create 4-6 images initially
+      for (let i = 0; i < Math.floor(Math.random() * 3) + 4; i++) {
+        createLoaderImage();
+      }
+
+        // Continuously create new images
+      setInterval(() => {
+        createLoaderImage();
+      }, 1500 + Math.random() * 1000); // Random interval
+
+      // Simulate loading time
+      setTimeout(() => {
+        // Hide the loader (or transition to your main content)
+        const loaderImages = document.querySelectorAll(".loader-image");
+        loaderImages.forEach(img => {
+            img.style.opacity = 0;
+          });
+        setTimeout(() => {
+            loaderImages.forEach(img => {
+                  img.remove();
+                });
+          }, 500); 
+      }, 5000); // Adjust loading time as needed
+    </script>
+
+  </body>
+</html>
