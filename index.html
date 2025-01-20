@@ -109,7 +109,7 @@ body {
             setTimeout(() => {
                   img.remove(); 
                 }, 500); 
-          }, 2000 + Math.random() * 2000); // Random fade-out time
+        }, 2000 ); // Random fade-out time -> + Math.random() * 2000
       }
 
       // Create 4-6 images initially
@@ -120,7 +120,7 @@ body {
         // Continuously create new images
       setInterval(() => {
         createLoaderImage();
-      }, 1500 + Math.random() * 1000); // Random interval
+      }, 1000 + Math.random() * 500); // Random interval
 
       // Simulate loading time
       setTimeout(() => {
