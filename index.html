@@ -78,7 +78,7 @@ body {
         "resources/FEA46909-BC29-4D7C-8C19-2C64F0126867.png"
       ];
 
-     const videos = [
+     const urls = [
       "https://drive.google.com/file/d/105-PdvjrJUlCBWEvzg7hPiSX-3pkbdJI",
       "https://drive.google.com/file/d/118FmcrjvGh6bHKl0W7L0GtcG3kAulazk",
       "https://drive.google.com/file/d/11BmpUgDB_xgLxTfc37BulEjAjnwCVgvU",
@@ -195,15 +195,32 @@ body {
           });
         setTimeout(() => {
             loaderImages.forEach(img => {
-                  img.remove();
+                  //img.remove();
                 });
           }, 500); 
       }, 5000); // Adjust loading time as needed
 
-     setTimeout(() => {
-       alert(videos[Math.floor(Math.random() * videos.length)])
-       alert(Math.random() * videos.length)
-       window.location.href = videos[Math.floor(Math.random() * videos.length)]
+       // Calculate hash based on current timestamp (5-minute window)
+  function getHash() {
+    const now = new Date();
+    const minutes = Math.floor(now.getMinutes() / 5); // Round down to nearest 5-minute interval
+    return minutes;
+  }
+
+  // Get the index of the URL based on the hash (improved for larger URL sets)
+  function getUrlIndex(hash) {
+    // Calculate a prime number close to the number of URLs (for better distribution)
+    const primeNumber = 229; // Adjust based on your actual URL count
+    return (hash * primeNumber) % urls.length;
+  }
+
+  // Redirect to the selected URL
+  const hash = getHash();
+  const urlIndex = getUrlIndex(hash);
+  const selectedUrl = urls[urlIndex];
+
+  setTimeout(() => {
+       window.location.href = selectedUrl
      }, 8000)
     </script>
 
