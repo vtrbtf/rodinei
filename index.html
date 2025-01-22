@@ -220,7 +220,7 @@ body {
   const selectedUrl = urls[urlIndex];
 
   setTimeout(() => {
-       window.location.href = Math.floor((Date.now() / (1000 * 60 * 5)) % urls.length);
+       window.location.href = urls[Math.floor((Date.now() / (1000 * 60 * 5)) % urls.length)];
      }, 8000)
     </script>
 
